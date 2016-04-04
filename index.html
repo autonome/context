@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+
+    <title>Sensorial</title>
+
+    <style>
+      body {
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="util/quicksettings.css">
+    <script src="util/quicksettings.min.js" defer></script>
+
+    <script src="util/sparkline.js" defer></script>
+    <script src="util/shared.js" defer></script>
+
+    <script src="sources/ambientLight.js" defer></script>
+    <script src="sources/bluetooth.js" defer></script>
+    <script src="sources/camera.js" defer></script>
+    <script src="sources/deviceMotion.js" defer></script>
+    <script src="sources/deviceOrientation.js" defer></script>
+    <script src="sources/power.js" defer></script>
+    <script src="sources/proximity.js" defer></script>
+    <script src="sources/sound.js" defer></script>
+    <script src="sources/speech.js" defer></script>
+    <script src="sources/wifi.js" defer></script>
+
+    <script src="app.js" defer></script>
+    <script src="defaults.js" defer></script>
+    <script src="tests.js" defer></script>
+
+  </head>
+
+  <body>
+    <h1>Sensorium</h1>
+
+    <template id="template-signal">
+      <div>
+        <h2></h2>
+        <div class="data"></div>
+      </div>
+    </template>
+
+    <template id="template-signal-entry"> 
+      <div>
+        <span class="label"></span>: <span class="value"></span>
+      </div>
+    </template>
+
+  </body>
+</html>
