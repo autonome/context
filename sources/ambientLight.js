@@ -26,7 +26,7 @@ var ambientLightSource = (function(window) {
         lastVal = e.value;
 
       if (eventCounter == 5) {
-        var percentDiff = percentDifference(lastVal, e.value);
+        var percentDiff = Math.abs(percentDifference(lastVal, e.value));
 
         //console.log('devicelight', lastVal, e.value, percentDiff)
 
