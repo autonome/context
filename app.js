@@ -13,6 +13,7 @@
   * Am traveling, get notification of "Joe's iPhone" in the house. WTF.
   * Getting dark and no people are around, so turn the lights off.
   * How am i sleeping? Analyse relative noise/motion.
+  * You haven't left the house in 5 days (Genevieve Bell)
 
   TODO implement broad classification detectors
 
