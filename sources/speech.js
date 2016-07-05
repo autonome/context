@@ -5,15 +5,19 @@
 var speechSource = (function(window) {
 
   var id = 'source-speech',
-      title = 'Speech Recognition';
+      title = 'Speech Recognition',
+      enabled = 'SpeechRecognition' in window;
 
   function start() {
-    var grammar = addVocabulary(['hey', 'you', 'carrot'])
-    recordSpeech(grammar, function(interim, complete, confidence) {
-      console.log('recording results', 'INTERIM:', interim, 'COMPLETE:', complete, 'CONFIDENCE:', confidence)
-      //say(complete)
-      //display([complete])
-    });
+    if (enabled) {
+        enabled = true;
+      var grammar = addVocabulary(['hey', 'you', 'carrot'])
+      recordSpeech(grammar, function(interim, complete, confidence) {
+        console.log('recording results', 'INTERIM:', interim, 'COMPLETE:', complete, 'CONFIDENCE:', confidence)
+        //say(complete)
+        //display([complete])
+      });
+    }
   }
 
   function addVocabulary(words) {
@@ -79,6 +83,7 @@ var speechSource = (function(window) {
   return {
     id: id,
     title: title,
+    enabled: enabled,
     start: start
   };
 

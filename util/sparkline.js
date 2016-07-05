@@ -29,6 +29,8 @@ var sparkline = (function(window) {
       }
     }
 
+    //console.log(userNumbers.length, outputNumbers.length);
+
     return renderNumbers(outputNumbers);
   }
 

@@ -1,18 +1,29 @@
-// Wifi
-// * Notify via sms when wifi goes down
-// * New network might mean a new neighbor
-// * Lost network might someone moved away
+/*
+
+Wifi
+
+* Notify via sms when wifi goes down
+* New network might mean a new neighbor
+* Lost network might someone moved away
+
+
+* Basic on/off done.
+
+TODO:
+* Needs add/remove detection
+
+*/
 
 var wifiSource = (function(global) {
 
   var id = 'source-wifi',
-      title = 'Wi-fi';
+      title = 'Wi-fi',
+      enabled = 'mozWifiManager' in navigator;
   
   function start() {
-    var wifi = navigator.mozWifiManager;
+    if (enabled) {
 
-    if (wifi) {
-
+      var wifi = navigator.mozWifiManager;
       var lastStatus = wifi.connection.status;
 
       var details = {
@@ -69,6 +80,7 @@ var wifiSource = (function(global) {
   return {
     id: id,
     title: title,
+    enabled: enabled,
     start: start
   };
 

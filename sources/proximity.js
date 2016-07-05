@@ -2,7 +2,8 @@
 var proximitySource = (function(window) {
 
   var id = 'source-proximity',
-      title = 'Proximity';
+      title = 'Proximity',
+      enabled = false;
 
   function start() {
     window.addEventListener('userproximity', function(e) {
@@ -32,6 +33,7 @@ var proximitySource = (function(window) {
   return {
     id: id,
     title: title,
+    enabled: enabled,
     start: start
   };
 

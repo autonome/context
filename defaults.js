@@ -8,8 +8,7 @@
   var trigger = {
     source: 'source-power',
     signal: 'batteryCharging',
-    value: false,
-    criticality: 3
+    value: false
   };
 
   var notification = {

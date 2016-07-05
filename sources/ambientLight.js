@@ -1,20 +1,29 @@
-// Ambient light
-// * Detecting a change might mean transition from day to night or back
-// * It might mean someone is present, blocking the light
-//
-// TODO: Threshold value is not right, since values gradually
-// increase/decrease when for example you cover and take your
-// hand off the screen.
-//
-// Take 1: only count every 5th event. Result, ehhhh is ok.
-// Event counter isn't always right because events come in at
-// variable rates.
-//
-// Take 2: TODO wait n ms and take last result
+/*
+
+Ambient light
+* Detecting a change might mean transition from day to night or back
+* It might mean someone is present, blocking the light
+
+TODO: Threshold value is not right, since values gradually
+increase/decrease when for example you cover and take your
+hand off the screen.
+
+Take 1: only count every 5th event. Result, ehhhh is ok.
+Event counter isn't always right because events come in at
+variable rates.
+
+Take 2: TODO wait n ms and take last result
+
+
+TODO:
+* not detecting brightened state in low light
+
+*/
 
 var ambientLightSource = (function(window) {
   var id = 'source-ambient-light',
       title = 'Ambient Light',
+      enabled = false,
       lastVal = null,
       threshold = 45,
       eventCounter = 0,
@@ -64,6 +73,7 @@ var ambientLightSource = (function(window) {
   return {
     id: id,
     title: title,
+    enabled: enabled,
     start: start
   };
 

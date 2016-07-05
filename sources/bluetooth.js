@@ -7,20 +7,21 @@ Bluetooth
 
 http://mxr.mozilla.org/gaia/search?string=bluetoothmanager
 
+TODO:
+* LE scanning
+* add/remove detection
+
 */
 
 var bluetoothSource = (function(global) {
   
   var id = 'source-bluetooth-devices',
       title = 'Bluetooth Devices',
+      enabled = 'mozBlueTooth' in navigator,
       devices = [],
       adapter = null;
 
   function initScan() {
-    if (!navigator.mozBluetooth) {
-      return;
-    }
-
     navigator.mozBluetooth.addEventListener('attributechanged', (evt) => {
       adapter = navigator.mozBluetooth.defaultAdapter;
 
@@ -71,13 +72,16 @@ var bluetoothSource = (function(global) {
   }
 
   function start() {
-    initScan();
+    if (enabled) {
+      initScan();
+    }
   }
 
   // public
   return {
     id: id,
     title: title,
+    enabled: enabled,
     start: start
   };
 

@@ -4,14 +4,27 @@
 var soundSource = (function(global) {
   
   var id = 'source-sound',
-      title = 'Sound';
+      title = 'Sound',
+      enabled = 'mediaDevices' in navigator;
 
   function start() {
-    navigator.mediaDevices.getUserMedia({ audio: true})
-      .then(onMediaStreamHandler)
-      .catch(function(error) { 
-        console.log('getUserMedia error: ', err);
-      });
+    /*
+    if (navigator.mediaDevices.enumerateDevices) {
+      navigator.mediaDevices.enumerateDevices().then(a =>
+        a.forEach(d =>
+          console.log(d)
+        )
+      );
+    }
+    */
+    
+    if ('mediaDevices' in navigator) {
+      navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(onMediaStreamHandler)
+        .catch(function(error) { 
+          console.log('getUserMedia error: ', err);
+        });
+    }
   }
 
   function onMediaStreamHandler(stream) {
@@ -70,6 +83,7 @@ var soundSource = (function(global) {
   return {
     id: id,
     title: title,
+    enabled: enabled,
     start: start
   };
 
