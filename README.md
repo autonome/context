@@ -118,6 +118,10 @@ Actions
 
 ## TODO
 
+Post
+* build api capabilities grid across mobile browsers
+* 4 mins: audience loads URL at beginning and lead them through learning what can be inferred with each api
+
 Implement broad classifications:
 
 * home vs away vs asleep
