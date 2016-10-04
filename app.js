@@ -16,15 +16,15 @@ function init() {
     console.log('No ability to requestWakeLock');
   }
 
-  [ ambientLightSource,
+  [ //ambientLightSource,
     bluetoothSource,
-    cameraSource, // TODO: implement me
-    deviceMotionSource,
-    deviceOrientationSource,
-    powerSource,
-    proximitySource,
-    soundSource, // TODO: implement activity
-    speechSource, // TODO: implement me
+    //cameraSource, // TODO: implement me
+    //deviceMotionSource,
+    //deviceOrientationSource,
+    //powerSource,
+    //proximitySource,
+    //soundSource, // TODO: implement activity
+    //speechSource, // TODO: implement me
   ].forEach(function(d) {
 
     // based on feature detection
@@ -37,10 +37,13 @@ function init() {
       sources[d.id] = d;
 
       // display all registered sources
-      render(d);
+      //render(d);
 
       // listent for data from the source
-      document.addEventListener(d.id, processEvent);
+      //document.addEventListener(d.id, processEvent);
+      document.addEventListener(d.id, checkIOS);
+
+      checkIOS(); 
     }
 
   });
@@ -66,6 +69,8 @@ function processEvent(e) {
       sourceId = source.id,
       signalId = e.detail.id;
 
+  console.log('processEvent(): ', sourceId, signalId);
+
   // cache source data by source id, then by signal id
   // TODO: persistentize this?
   // TOOD: cap this
@@ -78,7 +83,9 @@ function processEvent(e) {
   //notifyIFTTT(signalId, e.detail.label, e.detail.value) {
 
   // render the data
-  render(source, e.detail, cache[sourceId][signalId]);
+  //render(source, e.detail, cache[sourceId][signalId]);
+
+  console.log('processEvent(): ', sourceId, signalId);
 
   // find matching triggers
   if (triggers[sourceId] && triggers[sourceId][signalId]) {

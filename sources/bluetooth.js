@@ -21,27 +21,20 @@ var bluetoothSource = (function(global) {
       adapter = null;
 
   function initScan() {
-
-    console.log('bt: starting scan');
-
     navigator.mozBluetooth.addEventListener('attributechanged', (evt) => {
       doScan();
     });
   }
 
   function doScan() {
+    //console.log('bt: starting scan');
 
-    console.log('bt: starting scan');
     var adapter = navigator.mozBluetooth.defaultAdapter;
 
-    //console.log('bt: got adapter', adapter);
-
     adapter.stopDiscovery().then(function() {
-      console.log('bt: stopped discovery');
       adapter.startDiscovery().then(handle => {
-      console.log('bt: started discovery');
         handle.ondevicefound = e=> {
-          console.log('bt: found device');
+          //console.log('bt: found device');
           var name = e.device.name || 'Unnamed device',
               type = e.device.type || ''
 
@@ -51,7 +44,7 @@ var bluetoothSource = (function(global) {
             desc: name + (type ? ' (' + type + ')' : '')
           };
 
-          console.log('bt: device found', device);
+          //console.log('bt: device found', device);
 
           publish(id, {
             id: 'bluetoothDevice',

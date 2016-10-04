@@ -4,53 +4,50 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 
-    <title>Context</title>
+    <title>Bluetooth sold ya out</title>
 
     <style>
-      body {
+
+      @font-face {
+        font-family: 'Pacifico';
+        src: url('Pacifico.ttf');
+      }
+
+      html, body {
+        height: 100%; 
+        font-family: 'Pacifico', cursive;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      h1 {
+        font-size: 8vw;
+      }
+      .visible {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 2s linear;
+      }
+      .hidden {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 2s, opacity 2s linear;
       }
     </style>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" type="text/css" href="util/quicksettings.css">
-    <script src="util/quicksettings.min.js" defer></script>
-
-    <script src="util/sparkline.js" defer></script>
     <script src="util/shared.js" defer></script>
-
-    <script src="sources/ambientLight.js" defer></script>
     <script src="sources/bluetooth.js" defer></script>
-    <script src="sources/camera.js" defer></script>
-    <script src="sources/deviceMotion.js" defer></script>
-    <script src="sources/deviceOrientation.js" defer></script>
-    <script src="sources/power.js" defer></script>
-    <script src="sources/proximity.js" defer></script>
-    <script src="sources/sound.js" defer></script>
-    <script src="sources/speech.js" defer></script>
-    <script src="sources/wifi.js" defer></script>
-
+    <script src="ios.js" defer></script>
     <script src="app.js" defer></script>
-    <script src="defaults.js" defer></script>
-    <script src="tests.js" defer></script>
 
   </head>
 
   <body>
-    <h1>Context - Available Sensors</h1>
-
-    <template id="template-signal">
-      <div>
-        <h2></h2>
-        <div class="data"></div>
-      </div>
-    </template>
-
-    <template id="template-signal-entry"> 
-      <div>
-        <span class="label"></span>: <span class="value"></span>
-      </div>
-    </template>
-
+    <div class="container"> 
+      <h1 class="hidden"></h1>
+    </div>
   </body>
 </html>
