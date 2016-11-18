@@ -12,7 +12,7 @@
 var deviceOrientationSource = (function(window) {
   var id = 'source-device-orientation',
       title = 'Device Orientation',
-      enabled = false,
+      enabled = true,
       last = null,
       threshold = 25;
 

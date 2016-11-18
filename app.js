@@ -66,6 +66,8 @@ function processEvent(e) {
       sourceId = source.id,
       signalId = e.detail.id;
 
+  console.log('Context Event', sourceId, signalId, e.detail.label, e.detail.value);
+
   // cache source data by source id, then by signal id
   // TODO: persistentize this?
   // TOOD: cap this
@@ -162,7 +164,7 @@ function render(source, data, cachedData) {
     else if (data.type == 'stream') {
       var start = cachedData.length < MAX_LEN_SPARKBLOCK ? 0 : (cachedData.length - MAX_LEN_SPARKBLOCK);
       var show = cachedData.slice(start, cachedData.length);
-      value.textContent = sparkline.generate(show, MAX_LEN_SPARKBLOCK);
+      value.textContent = data.value; //sparkline.generate(show, MAX_LEN_SPARKBLOCK);
     }
 
     dataContainer.appendChild(entryNode);

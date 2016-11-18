@@ -14,27 +14,26 @@
   },
   "type": "certified",
   "permissions": {
-    "audio-capture" : {
-      "description" : "Audio capture"
-    },
+    "audio-capture" : {},
+    "background-sensors": {},
     "bluetooth":{},
     "browser": {},
+    "camera": {},
     "desktop-notification":{},
     "device-storage:music":{ "access": "readonly" },
     "device-storage:pictures":{ "access": "readonly" },
     "device-storage:sdcard":{ "access": "readwrite" },
     "device-storage:videos":{ "access": "readonly" },
     "firefox-accounts": {},
+    "geolocation": {},
     "nfc":{},
     "permissions":{},
     "power":{},
     "settings":{ "access": "readwrite" },
-    "speech-recognition" : {
-      "description" : "Speech recognition"
-    },
+    "speech-recognition" : {},
     "systemXHR": {},
     "time":{},
-    "video-capture":{},
+    "video-capture": {},
     "wifi-manage":{}
   }
 }
