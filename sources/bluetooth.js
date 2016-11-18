@@ -17,7 +17,7 @@ var bluetoothSource = (function(global) {
   
   var id = 'source-bluetooth-devices',
       title = 'Bluetooth Devices',
-      enabled = 'mozBlueTooth' in navigator,
+      enabled = 'mozBluetooth' in navigator,
       devices = [],
       adapter = null;
 

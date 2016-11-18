@@ -13,6 +13,31 @@ var cameraSource = (function(global) {
       enabled = 'mediaDevices' in navigator;
 
   function start() {
+    var config = {video: true, audio: false};
+
+    initCamera(config, function(stream) {
+      /*
+      var video = document.querySelector('.bg-video');
+      video.setAttribute('autoplay', true);
+      video.src = window.URL.createObjectURL(stream);
+      console.log('camera initialized');
+      */
+      var url = window.URL.createObjectURL(stream);
+      var data = {
+        id: 'cameraStreamURL',
+        label: 'Camera Stream URL',
+        type: 'scalar',
+        value: url
+      };
+
+      publish(id, data);
+    });
+  }
+
+  function initCamera(config, callback) {
+    navigator.mediaDevices.getUserMedia(config).then(function (stream) {
+      callback(stream);
+    });
   }
 
   // public

@@ -62,12 +62,14 @@ var soundSource = (function(global) {
     })();
 
     setInterval(function() {
-      publish(id, {
-        id: 'avgVolume',
-        value: avgVolume,
-        type: 'stream',
-        label: 'Average Volume'
-      });
+      if (avgVolume) {
+        publish(id, {
+          id: 'avgVolume',
+          value: avgVolume,
+          type: 'stream',
+          label: 'Average Volume'
+        });
+      }
 
       lastVolume = avgVolume
     }, 1000);

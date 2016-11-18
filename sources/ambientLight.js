@@ -23,7 +23,7 @@ TODO:
 var ambientLightSource = (function(window) {
   var id = 'source-ambient-light',
       title = 'Ambient Light',
-      enabled = false,
+      enabled = true,
       lastVal = null,
       threshold = 45,
       eventCounter = 0,
@@ -31,41 +31,37 @@ var ambientLightSource = (function(window) {
 
   function start() {
     window.addEventListener('devicelight', function(e) {
+
       if (!lastVal)
         lastVal = e.value;
 
-      if (eventCounter == 5) {
-        var percentDiff = percentDifference(lastVal, e.value);
+      var percentDiff = percentDifference(lastVal, e.value);
 
-        //console.log('devicelight', lastVal, e.value, percentDiff)
+      //console.log('devicelight', lastVal, e.value, percentDiff)
 
-        var data = {
-          id: 'ambientLight',
-          label: 'Ambient Light',
-          type: 'scalar',
-          value: null,
-          level: e.value,
-          lastVal: lastVal,
-          percentDiff: percentDiff
-        };
+      var data = {
+        id: 'ambientLight',
+        label: 'Ambient Light',
+        type: 'scalar',
+        value: null,
+        level: e.value,
+        lastVal: lastVal,
+        percentDiff: percentDiff
+      };
 
-        if (e.value < lastVal && percentDiff > threshold) {
-          // light dimmed!
-          data.value = 'dimmed';
-        } else if (e.value > lastVal && percentDiff > threshold) {
-          // light brightened!
-          data.value = 'brightened';
-        }
-
-        if (data.value) {
-          publish(id, data);
-        }
-
-        eventCounter = 0;
-        lastVal = e.value;
+      if (e.value < lastVal && percentDiff > threshold) {
+        // light dimmed!
+        data.value = 'dimmed';
+      } else if (e.value > lastVal && percentDiff > threshold) {
+        // light brightened!
+        data.value = 'brightened';
       }
 
-      eventCounter++;
+      if (data.value) {
+        publish(id, data);
+      }
+
+      lastVal = e.value;
     });
   }
 

@@ -10,7 +10,7 @@
 var deviceMotionSource = (function(window) {
   var id = 'source-device-motion',
       title = 'Device Motion',
-      enabled = false,
+      enabled = true,
       last = null,
       threshold = 100; // meters per second
 
