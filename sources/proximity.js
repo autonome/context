@@ -3,7 +3,7 @@ var proximitySource = (function(window) {
 
   var id = 'source-proximity',
       title = 'Proximity',
-      enabled = true;
+      enabled = 'mozBluetooth' in navigator; // fxos check
 
   function start() {
     window.addEventListener('userproximity', function(e) {

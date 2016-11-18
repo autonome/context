@@ -23,7 +23,7 @@ TODO:
 var ambientLightSource = (function(window) {
   var id = 'source-ambient-light',
       title = 'Ambient Light',
-      enabled = true,
+      enabled = 'mozBluetooth' in navigator, // fxos check
       lastVal = null,
       threshold = 45,
       eventCounter = 0,
